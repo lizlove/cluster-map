@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Cluster Map</title>
+  </head>
+  <body>
+    <div class="container" id="map"></div>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiZWxvdmVybyIsImEiOiJja3RvZ3pja3cwY3I3Mm9wOThyeTRiNG5hIn0.tBK7GERT9q0Ew9juN6Aa2w";
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        style: "mapbox://styles/carbondesignsystem/ck7c8cfpp08h61irrudv7f1xg", // style URL
+        center: [-96.35, 39.5], // starting position [lng, lat]
+        zoom: 4, // starting zoom
+      });
+      console.log('map is made 🗺️');
+        const popup = new mapboxgl.Popup({offset:25}).setText(
+            'Construction on the Washington Monument began in 1848.'
+        );
+
+        const el = document.createElement('div');
+        el.id = "marker";
+
+        new mapboxgl.Marker(el)
+            .setLngLat([-73.99102684603675, 40.74121894384252])
+            .setPopup(popup)
+            .addTo(map);
+    </script>
+  </body>
+</html>
