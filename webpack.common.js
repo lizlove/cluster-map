@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
@@ -36,13 +35,5 @@ module.exports = {
   ],
   stats: {
     children: true,
-  },
-  mode: "production",
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        /* additional options here */
-      }),
-    ],
   },
 };
