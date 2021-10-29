@@ -1,0 +1,19 @@
+{
+  "name": "cluster-map",
+  "version": "1.0.0",
+  "description": "Map of FI cluster resources",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizlove/cluster-map.git"
+  },
+  "author": "lizlove",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lizlove/cluster-map/issues"
+  },
+  "homepage": "https://github.com/lizlove/cluster-map#readme"
+}
