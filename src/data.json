@@ -1,0 +1,35 @@
+
+  {
+    type: "Feature",
+    properties: {
+      description:
+        "<strong>Flatiron Institute</strong><p>Zombies reversus ab inferno, nam malum cerebro.  De carne animata corpora quaeritis. </p>",
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [40.74121894384252, -73.99102684603675],
+    },
+  },
+  {
+    type: "Feature",
+    properties: {
+      description:
+        "<strong>CoreSite</strong><p>Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris.</p>",
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [40.7849238186815, -74.06256427926488],
+    },
+  },
+  {
+    type: "Feature",
+    properties: {
+      description:
+        "<strong>San Diego Supercomputer Center</strong><p> Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium..</p>",
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [32.885107914511536, -117.2391682153456],
+    },
+  },
+]
