@@ -9,6 +9,8 @@ mapboxgl.accessToken =
 
 export default function Map() {
   const mapContainer = useRef(null);
+  const tooltipRef = useRef(new mapboxgl.Popup({ offset: 15 }));
+  // See: https://github.com/mapbox/mapbox-react-examples/blob/master/react-tooltip/src/Map.js
   const map = useRef(null);
   const [lng, setLng] = useState(-96.35);
   const [lat, setLat] = useState(39.5);
@@ -24,8 +26,20 @@ export default function Map() {
     });
   });
 
+  useEffect(() => {
+    if (!map.current) return; // wait for map to initialize
+    map.current.on("move", () => {
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
+      setZoom(map.current.getZoom().toFixed(2));
+    });
+  });
+
   return (
     <div>
+      <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      </div>
       <div ref={mapContainer} className="map-container" />
     </div>
   );
