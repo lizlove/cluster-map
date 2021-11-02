@@ -31,10 +31,17 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
-      favicon: path.join(__dirname, "src", "favicon.ico")
+      favicon: path.join(__dirname, "src", "favicon.ico"),
     }),
   ],
   stats: {
     children: true,
   },
+  // resolve: {
+  //   fallback: {
+  //     fs: false,
+  //     os: false,
+  //     path: require.resolve("path-browserify"),
+  //   },
+  // },
 };
