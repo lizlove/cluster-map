@@ -45,10 +45,15 @@ export default function Map() {
     if (!map.current) return;
     // Create popup node
     const popupNode = document.createElement("div");
+    let location = {
+      title: "Flatiron Institute",
+      description: "",
+      id: "fi-0",
+      lngLat: [-73.99102684603675, 40.74121894384252],
+    };
     ReactDOM.render(<Popup location={location} />, popupNode);
 
     popupRef.current
-      .setText("Yo Yo YO")
       .setLngLat([-73.99102684603675, 40.74121894384252])
       .setDOMContent(popupNode)
       .addTo(map.current);

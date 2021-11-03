@@ -1,15 +1,15 @@
 import React from "react";
 
-const Tooltip = ({ feature }) => {
-  const { id } = feature.properties;
+const Popup = ({ location }) => {
+  const { id } = location.id;
 
   return (
-    <div id={`tooltip-${id}`}>
-      <strong>Source Layer:</strong> {feature.layer["source-layer"]}
+    <div id={`popup-${id}`}>
+      <strong>Title:</strong> {location.title}
       <br />
-      <strong>Layer ID:</strong> {feature.layer.id}
+      <strong>Description:</strong> {location.description}
     </div>
   );
 };
 
-export default Tooltip;
+export default Popup;
