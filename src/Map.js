@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Popup from "./Popup";
+import data from "./cluster-data.json";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./map.css";
