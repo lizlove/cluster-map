@@ -12,7 +12,16 @@ mapboxgl.accessToken =
 
 export default function Map() {
   const mapContainer = useRef(null);
-  const popupRef = useRef(new mapboxgl.Popup({ offset: 25 }));
+  const popupRefs = [];
+  const markerRefs = [];
+
+  for (const clust of data.clusters) {
+    markerRefs.push(useRef(new mapboxgl.Marker({})));
+    popupRefs.push(useRef(new mapboxgl.Popup({ offset: 25 })));
+  }
+
+  console.log("markerRefs", markerRefs);
+
   // See: https://github.com/mapbox/mapbox-react-examples/blob/master/react-tooltip/src/Map.js
 
   const map = useRef(null);
@@ -25,28 +34,20 @@ export default function Map() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/carbondesignsystem/ck7c8cfpp08h61irrudv7f1xg",
+      style: "mapbox://styles/carbondesignsystem/ck7c89g8708gy1imlz9g5o6h9",
       center: [lng, lat],
       zoom: zoom,
     });
   });
 
-  // Plot long / lat and zoom in top corner
-  // useEffect(() => {
-  //   if (!map.current) return; // wait for map to initialize
-  //   map.current.on("move", () => {
-  //     setLng(map.current.getCenter().lng.toFixed(4));
-  //     setLat(map.current.getCenter().lat.toFixed(4));
-  //     setZoom(map.current.getZoom().toFixed(2));
-  //   });
-  // });
-
   // Add markers and popups
   useEffect(() => {
     if (!map.current) return;
     // Create popup nodes
-    data.clusters.forEach((cluster) => {
-      console.log("♣️", cluster.id);
+    data.clusters.forEach((cluster, i) => {
+      let markerNode = document.createElement("div");
+      markerNode.id = `marker-${cluster.id}`;
+
       let popupNode = document.createElement("div");
       let clusterInfo = {
         title: cluster.title,
@@ -56,9 +57,11 @@ export default function Map() {
       };
       ReactDOM.render(<Popup cluster={clusterInfo} />, popupNode);
 
-      popupRef.current
+      popupRefs[i].current.setDOMContent(popupNode);
+
+      markerRefs[i].current
         .setLngLat(cluster.lngLat)
-        .setDOMContent(popupNode)
+        .setPopup(popupRefs[i].current)
         .addTo(map.current);
     });
   });
