@@ -11,7 +11,7 @@ Map for illustrating components of the Flatiron Institute computing cluster.
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    gatsby develop
+    npm run start
     ```
 
 1.  **Open the source code and start editing!**
@@ -65,9 +65,7 @@ features: [
       coordinates: [32.885107914511536, -117.2391682153456],
     },
   },
-],
-},
-});
+]
 
 
 ## ↪️ Next
