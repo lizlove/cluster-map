@@ -1,13 +1,11 @@
 import React from "react";
 
-const Popup = ({ location }) => {
-  const { id } = location.id;
-
+const Popup = ({ cluster }) => {
   return (
-    <div id={`popup-${id}`}>
-      <strong>Title:</strong> {location.title}
+    <div id={`popup-${cluster.id}`}>
+      <strong>Title:</strong> {cluster.title}
       <br />
-      <strong>Description:</strong> {location.description}
+      <strong>Description:</strong> {cluster.description}
     </div>
   );
 };

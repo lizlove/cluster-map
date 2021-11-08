@@ -1,130 +1,188 @@
 {
-    {
-        "title": "Rusty @ FI",
-        "cluster": "Rusty",
-        "description": "Located at Flatiron Institute across two buildings on Fifth Avenue in New York City.",
-        "command": "ssh rusty",
-        "total_cores": 16000,
-        "total_memory": "180 TB",
-        "children": [
-            { 
-                "nodetype": "login",
-                "nodecount": 2,
-                "cores": "", 
-                "memory": "",
-                "command": "ssh popeye"
-            },
-            { 
-                "nodetype": "compute",
-                "nodecount": 900,
-                "cores": "", 
-                "memory": "",
-                "command": "-C opa",
-                "children": [
-                    {
-                        "nodetype": "broadwell",
-                        "nodecount": 200,
-                        "cores": "28", 
-                        "memory": "512 GB",
-                        "command": "-C broadwell"
-                    },
-                    {
-                        "nodetype": "skylake",
-                        "nodecount": 200,
-                        "cores": "40", 
-                        "memory": "768 GB",
-                        "command": "-C skylake"
-                    }
-                ]
-            },
-            { 
-                "nodetype": "GPU",
-                "nodecount": 22,
-                "cores": "", 
-                "memory": "",
-                "command": "-p gpu",
-                "children": [
-                    {
-                        "nodetype": "v100",
-                        "nodecount": 88,
-                        "cores": "", 
-                        "memory": "",
-                        "command": "-C v100"
-                    }
-                ]
-            },
-            { 
-                "nodetype": "memory",
-                "nodecount": 4,
-                "cores": "96-192", 
-                "memory": "3-6 TB",
-                "command": "-p mem"
-                
-            }
-        ]
-    },
-    {
-        "title": "Rusty @ CoreSite",
-        "cluster": "Rusty",
-        "description": "Located at the CoreSite Data Center in Secaucus, New Jersey",
-        "command": "ssh rustyamd",
-        "total_cores": 71000,
-        "total_memory": "640TB",
-        "children": [
-            { 
-                "nodetype": "login",
-                "nodecount": 2,
-                "cores": "", 
-                "memory": "",
-                "command": "ssh rustyamd"
-            },
-            { 
-                "nodetype": "compute",
-                "nodecount": 560,
-                "cores": "", 
-                "memory": "",
-                "command": "-C ib",
-                "children": [
-                    {
-                        "nodetype": "rome",
-                        "nodecount": 560,
-                        "cores": "128", 
-                        "memory": "1 GB",
-                        "command": "-C rome"
-                    },
-                ]
-            },
-            { 
-                "nodetype": "GPU",
-                "nodecount": 83,
-                "cores": "", 
-                "memory": "",
-                "command": "-p gpu",
-                "children": [
-                    {
-                        "nodetype": "a100",
-                        "nodecount": 156,
-                        "cores": "", 
-                        "memory": "",
-                        "command": "-C a100"
-                    },
-                    {
-                        "nodetype": "v100",
-                        "nodecount": 176,
-                        "cores": "", 
-                        "memory": "",
-                        "command": "-C v100"
-                    }
-                ]
-            },
-            { 
-                "nodetype": "memory",
-                "nodecount": 4,
-                "cores": "96-192", 
-                "memory": "3-6 TB",
-                "command": "-p mem"
-                
-            }
-        ]
-    }
+	"clusters": [{
+			"title": "Rusty @ FI",
+			"cluster": "rusty",
+            "lngLat": [-73.99102684603675, 40.74121894384252],
+            "id": "manhattan",
+			"description": "Located at Flatiron Institute across two buildings on Fifth Avenue in New York City.",
+			"command": "ssh rusty",
+			"total_cores": 16000,
+			"total_memory": "180 TB",
+			"children": [{
+					"nodetype": "login",
+					"nodecount": 2,
+					"cores": "",
+					"memory": "",
+					"command": "ssh rusty"
+				},
+				{
+					"nodetype": "compute",
+					"nodecount": 900,
+					"cores": "",
+					"memory": "",
+					"command": "-C opa",
+					"children": [{
+							"nodetype": "broadwell",
+							"nodecount": 200,
+							"cores": "28",
+							"memory": "512 GB",
+							"command": "-C broadwell"
+						},
+						{
+							"nodetype": "skylake",
+							"nodecount": 200,
+							"cores": "40",
+							"memory": "768 GB",
+							"command": "-C skylake"
+						}
+					]
+				},
+				{
+					"nodetype": "GPU",
+					"nodecount": 22,
+					"cores": "",
+					"memory": "",
+					"command": "-p gpu",
+					"children": [{
+						"nodetype": "v100",
+						"nodecount": 88,
+						"cores": "",
+						"memory": "",
+						"command": "-C v100"
+					}]
+				},
+				{
+					"nodetype": "memory",
+					"nodecount": 4,
+					"cores": "96-192",
+					"memory": "3-6 TB",
+					"command": "-p mem"
+
+				}
+			]
+		},
+		{
+			"title": "Rusty @ CoreSite",
+			"cluster": "rusty",
+            "lngLat": [ -74.06256427926488, 40.7849238186815],
+            "id": "secaucus",
+			"description": "Located at the CoreSite Data Center in Secaucus, New Jersey",
+			"command": "ssh rustyamd",
+			"total_cores": 71000,
+			"total_memory": "640TB",
+			"children": [{
+					"nodetype": "login",
+					"nodecount": 2,
+					"cores": "",
+					"memory": "",
+					"command": "ssh rustyamd"
+				},
+				{
+					"nodetype": "compute",
+					"nodecount": 560,
+					"cores": "",
+					"memory": "",
+					"command": "-C ib",
+					"children": [{
+						"nodetype": "rome",
+						"nodecount": 560,
+						"cores": "128",
+						"memory": "1 TB",
+						"command": "-C rome"
+					}]
+				},
+				{
+					"nodetype": "GPU",
+					"nodecount": 83,
+					"cores": "",
+					"memory": "",
+					"command": "-p gpu",
+					"children": [{
+							"nodetype": "a100",
+							"nodecount": 156,
+							"cores": "",
+							"memory": "",
+							"command": "-C a100"
+						},
+						{
+							"nodetype": "v100",
+							"nodecount": 176,
+							"cores": "",
+							"memory": "",
+							"command": "-C v100"
+						}
+					]
+				}
+			]
+		},
+		{
+			"title": "Popeye @ SDSC",
+			"cluster": "popeye",
+            "lngLat": [-117.2391682153456, 32.885107914511536],
+            "id": "lajolla",
+			"description": "Located at San Diego Supercomputer Center a department of the University of California San Diego in La Jolla, CA.",
+			"command": "ssh popeye",
+			"total_cores": 42000,
+			"total_memory": "670 TB",
+			"children": [{
+					"nodetype": "login",
+					"nodecount": 2,
+					"cores": "",
+					"memory": "",
+					"command": "ssh popeye"
+				},
+				{
+					"nodetype": "compute",
+					"nodecount": 900,
+					"cores": "",
+					"memory": "",
+					"command": "-C ib",
+					"children": [{
+							"nodetype": "skylake",
+							"nodecount": 144,
+							"cores": "48",
+							"memory": "768 GB",
+							"command": "-C skylake"
+						},
+						{
+							"nodetype": "cascadelake",
+							"nodecount": 432,
+							"cores": "48",
+							"memory": "768 GB",
+							"command": "-C cascadelake"
+						},
+						{
+							"nodetype": "icelake",
+							"nodecount": 216,
+							"cores": "64",
+							"memory": "1 TB",
+							"command": "-C icelake"
+						}
+					]
+				},
+				{
+					"nodetype": "GPU",
+					"nodecount": 32,
+					"cores": "",
+					"memory": "",
+					"command": "-p gpu",
+					"children": [{
+						"nodetype": "v100",
+						"nodecount": 128,
+						"cores": "",
+						"memory": "",
+						"command": "-C v100"
+					}]
+				},
+				{
+					"nodetype": "memory",
+					"nodecount": 1,
+					"cores": "96",
+					"memory": "3 TB",
+					"command": "-p mem"
+
+				}
+			]
+		}
+	]
 }

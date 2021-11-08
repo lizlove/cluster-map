@@ -44,20 +44,23 @@ export default function Map() {
   // Add markers and popups
   useEffect(() => {
     if (!map.current) return;
-    // Create popup node
-    const popupNode = document.createElement("div");
-    let location = {
-      title: "Flatiron Institute",
-      description: "",
-      id: "fi-0",
-      lngLat: [-73.99102684603675, 40.74121894384252],
-    };
-    ReactDOM.render(<Popup location={location} />, popupNode);
+    // Create popup nodes
+    data.clusters.forEach((cluster) => {
+      console.log("♣️", cluster.id);
+      let popupNode = document.createElement("div");
+      let clusterInfo = {
+        title: cluster.title,
+        description: cluster.description,
+        id: cluster.id,
+        lngLat: cluster.lngLat,
+      };
+      ReactDOM.render(<Popup cluster={clusterInfo} />, popupNode);
 
-    popupRef.current
-      .setLngLat([-73.99102684603675, 40.74121894384252])
-      .setDOMContent(popupNode)
-      .addTo(map.current);
+      popupRef.current
+        .setLngLat(cluster.lngLat)
+        .setDOMContent(popupNode)
+        .addTo(map.current);
+    });
   });
 
   return (
