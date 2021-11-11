@@ -4,7 +4,7 @@ import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-load
 import Popup from "./Popup";
 import data from "./cluster-data.json";
 
-import "mapbox-gl/dist/mapbox-gl.css";
+require("mapbox-gl/dist/mapbox-gl.css");
 import "./map.css";
 
 mapboxgl.accessToken =
