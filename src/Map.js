@@ -27,14 +27,14 @@ export default function Map() {
   const map = useRef(null);
   const [lng, setLng] = useState(-96.35);
   const [lat, setLat] = useState(39.5);
-  const [zoom, setZoom] = useState(4);
+  const [zoom, setZoom] = useState(3);
 
   // Initialize map
   useEffect(() => {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/carbondesignsystem/ck7c89g8708gy1imlz9g5o6h9",
+      style: "mapbox://styles/carbondesignsystem/ck7c8cfpp08h61irrudv7f1xg",
       center: [lng, lat],
       zoom: zoom,
     });
@@ -68,9 +68,9 @@ export default function Map() {
 
   return (
     <div>
-      <div className="sidebar">
+      {/* <div className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
+      </div> */}
       <div ref={mapContainer} className="map-container" />
     </div>
   );

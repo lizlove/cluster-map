@@ -1,18 +1,17 @@
 import React from "react";
 import "./app.css";
 import Map from "./Map";
-import { Button, Grid, Row, Column } from "carbon-components-react";
-import { FreeCameraOptions } from "mapbox-gl";
+import { Grid, Row, Column } from "carbon-components-react";
 
 export default function App() {
   return (
     <div className="app">
       <Grid>
         <Row>
-          <Column sm={2} md={4} lg={6}>
-            <Button kind="primary">Button</Button>
+          <Column sm={4} md={6} lg={5}>
+            <h2>Flatiron Cluster Computing</h2>
           </Column>
-          <Column sm={2} md={4} lg={6}>
+          <Column sm={4} md={6} lg={7}>
             <Map />
           </Column>
         </Row>
