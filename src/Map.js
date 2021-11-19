@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Popup from "./Popup";
-import data from "./cluster-data.json";
 
 require("mapbox-gl/dist/mapbox-gl.css");
 import "./map.css";
@@ -10,12 +9,14 @@ import "./map.css";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiZWxvdmVybyIsImEiOiJja3RvZ3pja3cwY3I3Mm9wOThyeTRiNG5hIn0.tBK7GERT9q0Ew9juN6Aa2w";
 
-export default function Map() {
+export default function Map(props) {
   const mapContainer = useRef(null);
   const popupRefs = [];
   const markerRefs = [];
 
-  for (const clust of data.clusters) {
+  console.log("🙅‍♂️", props);
+
+  for (const clust of props.data.clusters) {
     markerRefs.push(useRef(new mapboxgl.Marker({})));
     popupRefs.push(useRef(new mapboxgl.Popup({ offset: 25 })));
   }
@@ -27,7 +28,7 @@ export default function Map() {
   const map = useRef(null);
   const [lng, setLng] = useState(-96.35);
   const [lat, setLat] = useState(39.5);
-  const [zoom, setZoom] = useState(3);
+  const [zoom, setZoom] = useState(props.zoom);
 
   // Initialize map
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function Map() {
   useEffect(() => {
     if (!map.current) return;
     // Create popup nodes
-    data.clusters.forEach((cluster, i) => {
+    props.data.clusters.forEach((cluster, i) => {
       let markerNode = document.createElement("div");
       markerNode.id = `marker-${cluster.id}`;
 
@@ -71,7 +72,7 @@ export default function Map() {
       {/* <div className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div> */}
-      <div ref={mapContainer} className="map-container" />
+      <div ref={mapContainer} className={props.mapSize} />
     </div>
   );
 }

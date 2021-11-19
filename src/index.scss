@@ -1,1 +1,22 @@
 @import '~carbon-components/scss/globals/scss/styles.scss';
+
+.row {
+    margin: $spacing-05 auto $spacing-09;
+}
+
+h1 {
+    margin: $spacing-04 auto $spacing-08;
+}
+h2 {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    margin: $spacing-04 auto $spacing-08;
+}
+h3 {
+    margin-bottom: $spacing-08;
+}
+p.chart-title {
+    margin: $spacing-02 auto $spacing-03;
+    font-size: 16px;
+    font-weight: 600;
+}
