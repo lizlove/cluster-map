@@ -1,4 +1,13 @@
 import React from "react";
+import {
+  DataTable,
+  Table,
+  TableHead,
+  TableRow,
+  TableHeader,
+  TableBody,
+  TableCell,
+} from "carbon-components-react";
 
 const Popup = ({ cluster }) => {
   return (

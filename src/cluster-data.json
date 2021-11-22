@@ -2,13 +2,13 @@
 	"clusters": [
 		{
 			"title": "Rusty (aka Iron Cluster)",
-			"description": "Lorem ipsum",
+			"description": "Lorem ipsum iron",
+			"id": "rusty",
 			"children": [
 				{
 					"title": "Rusty @ FI",
-					"cluster": "rusty",
 					"lngLat": [-73.99102684603675, 40.74121894384252],
-					"id": "manhattan",
+					"id": "r-fi",
 					"description": "Located at Flatiron Institute across two buildings on Fifth Avenue in New York City.",
 					"command": "ssh rusty",
 					"total_cores": 16000,
@@ -18,7 +18,8 @@
 							"nodecount": 2,
 							"cores": "",
 							"memory": "",
-							"command": "ssh rusty"
+							"command": "ssh rusty",
+							"id": "r-fi-login"
 						},
 						{
 							"nodetype": "compute",
@@ -26,19 +27,22 @@
 							"cores": "",
 							"memory": "",
 							"command": "-C opa",
+							"id": "r-fi-cpu",
 							"children": [{
 									"nodetype": "broadwell",
 									"nodecount": 200,
 									"cores": "28",
 									"memory": "512 GB",
-									"command": "-C broadwell"
+									"command": "-C broadwell",
+									"id": "r-fi-broadwell"
 								},
 								{
 									"nodetype": "skylake",
 									"nodecount": 200,
 									"cores": "40",
 									"memory": "768 GB",
-									"command": "-C skylake"
+									"command": "-C skylake",
+									"id": "r-fi-skylake"
 								}
 							]
 						},
@@ -48,12 +52,14 @@
 							"cores": "",
 							"memory": "",
 							"command": "-p gpu",
+							"id": "r-fi-gpu",
 							"children": [{
 								"nodetype": "v100",
 								"nodecount": 88,
 								"cores": "",
 								"memory": "",
-								"command": "-C v100"
+								"command": "-C v100",
+								"id": "r-fi-v100"
 							}]
 						},
 						{
@@ -61,16 +67,15 @@
 							"nodecount": 4,
 							"cores": "96-192",
 							"memory": "3-6 TB",
-							"command": "-p mem"
-		
+							"command": "-p mem",
+							"id": "r-fi-mem"
 						}
 					]
 				},
 				{
 					"title": "Rusty @ CoreSite",
-					"cluster": "rusty",
 					"lngLat": [ -74.06256427926488, 40.7849238186815],
-					"id": "secaucus",
+					"id": "r-cs",
 					"description": "Located at the CoreSite Data Center in Secaucus, New Jersey",
 					"command": "ssh rustyamd",
 					"total_cores": 71000,
@@ -80,7 +85,8 @@
 							"nodecount": 2,
 							"cores": "",
 							"memory": "",
-							"command": "ssh rustyamd"
+							"command": "ssh rustyamd",
+							"id": "r-cs-login"
 						},
 						{
 							"nodetype": "compute",
@@ -88,12 +94,14 @@
 							"cores": "",
 							"memory": "",
 							"command": "-C ib",
+							"id": "r-cs-gpu",
 							"children": [{
 								"nodetype": "rome",
 								"nodecount": 560,
 								"cores": "128",
 								"memory": "1 TB",
-								"command": "-C rome"
+								"command": "-C rome",
+								"id": "r-cs-rome"
 							}]
 						},
 						{
@@ -102,19 +110,22 @@
 							"cores": "",
 							"memory": "",
 							"command": "-p gpu",
+							"id": "r-cs-gpu",
 							"children": [{
 									"nodetype": "a100",
 									"nodecount": 156,
 									"cores": "",
 									"memory": "",
-									"command": "-C a100"
+									"command": "-C a100",
+									"id": "r-cs-a100"
 								},
 								{
 									"nodetype": "v100",
 									"nodecount": 176,
 									"cores": "",
 									"memory": "",
-									"command": "-C v100"
+									"command": "-C v100",
+									"id": "r-cs-v100"
 								}
 							]
 						}
@@ -124,13 +135,14 @@
 		},
 		{
 			"title": "Popeye (aka SDSC)",
-			"description": "Lorem ipsum",
+			"id": "popeye",
+			"description": "Lorem ipsum spinach",
 			"children": [
 				{
 					"title": "Popeye @ SDSC",
 					"cluster": "popeye",
 					"lngLat": [-117.2391682153456, 32.885107914511536],
-					"id": "lajolla",
+					"id": "p",
 					"description": "Located at San Diego Supercomputer Center a department of the University of California San Diego in La Jolla, CA.",
 					"command": "ssh popeye",
 					"total_cores": 42000,
@@ -140,7 +152,8 @@
 							"nodecount": 2,
 							"cores": "",
 							"memory": "",
-							"command": "ssh popeye"
+							"command": "ssh popeye",
+							"id": "p-login"
 						},
 						{
 							"nodetype": "compute",
@@ -148,7 +161,9 @@
 							"cores": "",
 							"memory": "",
 							"command": "-C ib",
+							"id": "p-cpu",
 							"children": [{
+									"id":"p-skylake",
 									"nodetype": "skylake",
 									"nodecount": 144,
 									"cores": "48",
@@ -156,6 +171,7 @@
 									"command": "-C skylake"
 								},
 								{
+									"id": "p-cascakelake",
 									"nodetype": "cascadelake",
 									"nodecount": 432,
 									"cores": "48",
@@ -163,6 +179,7 @@
 									"command": "-C cascadelake"
 								},
 								{
+									"id": "p-icelake",
 									"nodetype": "icelake",
 									"nodecount": 216,
 									"cores": "64",
@@ -177,7 +194,9 @@
 							"cores": "",
 							"memory": "",
 							"command": "-p gpu",
+							"id": "p-gpu",
 							"children": [{
+								"id": "p-v100",
 								"nodetype": "v100",
 								"nodecount": 128,
 								"cores": "",
@@ -190,8 +209,8 @@
 							"nodecount": 1,
 							"cores": "96",
 							"memory": "3 TB",
-							"command": "-p mem"
-		
+							"command": "-p mem",
+							"id": "p-mem"
 						}
 					]
 				}

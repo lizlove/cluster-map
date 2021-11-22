@@ -13,15 +13,17 @@ export default function Map(props) {
   const mapContainer = useRef(null);
   const popupRefs = [];
   const markerRefs = [];
+  const sites = [];
 
   console.log("🙅‍♂️", props);
 
   for (const clust of props.data.clusters) {
-    markerRefs.push(useRef(new mapboxgl.Marker({})));
-    popupRefs.push(useRef(new mapboxgl.Popup({ offset: 25 })));
+    for (const site of clust.children) {
+      sites.push(site);
+      markerRefs.push(useRef(new mapboxgl.Marker({})));
+      popupRefs.push(useRef(new mapboxgl.Popup({ offset: 25 })));
+    }
   }
-
-  console.log("markerRefs", markerRefs);
 
   // See: https://github.com/mapbox/mapbox-react-examples/blob/master/react-tooltip/src/Map.js
 
@@ -41,29 +43,35 @@ export default function Map(props) {
     });
   });
 
+  useEffect(() => {
+    console.log("SITES", sites);
+  });
+
   // Add markers and popups
   useEffect(() => {
     if (!map.current) return;
     // Create popup nodes
     props.data.clusters.forEach((cluster, i) => {
-      let markerNode = document.createElement("div");
-      markerNode.id = `marker-${cluster.id}`;
+      cluster.children.forEach((site, i) => {
+        let markerNode = document.createElement("div");
+        markerNode.id = `marker-${site.id}`;
 
-      let popupNode = document.createElement("div");
-      let clusterInfo = {
-        title: cluster.title,
-        description: cluster.description,
-        id: cluster.id,
-        lngLat: cluster.lngLat,
-      };
-      ReactDOM.render(<Popup cluster={clusterInfo} />, popupNode);
+        let popupNode = document.createElement("div");
+        let siteInfo = {
+          title: site.title,
+          description: site.description,
+          id: site.id,
+          lngLat: site.lngLat,
+        };
+        ReactDOM.render(<Popup cluster={siteInfo} />, popupNode);
 
-      popupRefs[i].current.setDOMContent(popupNode);
+        popupRefs[i].current.setDOMContent(popupNode);
 
-      markerRefs[i].current
-        .setLngLat(cluster.lngLat)
-        .setPopup(popupRefs[i].current)
-        .addTo(map.current);
+        markerRefs[i].current
+          .setLngLat(site.lngLat)
+          .setPopup(popupRefs[i].current)
+          .addTo(map.current);
+      });
     });
   });
 
